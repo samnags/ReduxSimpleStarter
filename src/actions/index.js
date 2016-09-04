@@ -1,6 +1,9 @@
+// this is an action creator
 export function selectBook(book) {
-  console.log('A book has been selected:', book.title);
+  // needs to return an action
+    // aka an object with at type property
+  return {
+    type: 'BOOK_SELECTED',
+    payload: book
+  };
 }
-
-// Need to get action to run through all of the reducers
-// Need to wrire action up to Redux

@@ -9,14 +9,15 @@ import { bindActionCreators } from 'redux'
 
 // container - React component that has direct connection to state managed by Redux
 // move containers into their old folder
-
-
-
 class BookList extends Component {
   renderList() {
     return this.props.books.map((book) => {
       return (
-        <li key={book.title} className="list-group-item">{book.title}</li>
+        <li
+        key={book.title}
+        onClick={ () => this.props.selectBook(book) }
+        className="list-group-item">{book.title}
+        </li>
       );
     });
   }
@@ -32,22 +33,27 @@ class BookList extends Component {
 
   // how does this function work? State isn't available in broader scope but is within method
 function mapStateToProps(state) {
-  // Purpose is to take application state as argument. whatever is returned will show up as props inside of BookList
+// Purpose is to take application state as argument. whatever is returned will show up as props inside of BookList
   return {
       books: state.books
   };
 }
 
 
-  // Anything returned from this function will end up as props on BookList container
+
 function mapDispatchToProps(dispatch) {
-  // Whenever selectBook is called, result should be passed to all reducers.
-  // bindActionCreators is saying - okay so you're going to call the selectBook action at some point. When you do, I want to pass it on to all the reducers using dispatch
+// Whenever selectBook is called, result should be passed to all reducers.
+
+// bindActionCreators is saying - okay so you're going to call the selectBook action at some point. When you do, I want to pass it on to all the reducers  using dispatch
+
+// Anything returned from this function will end up as props on BookList container
+  // so there will be this.props.selectBook which will call the action screator
+
   return bindActionCreators({ selectBook: selectBook}, dispatch);
 }
 
 
-// When promoting BookList from a component to container, it needs to knwo about dispatch method, selectBook
+// When promoting BookList from a component to container, it needs to know about dispatch method, selectBook
 export default connect(mapStateToProps, mapDispatchToProps)(BookList);
   // In container files, we don't export the component, we export the container
   // That's why we don't do export default BookList but rather export default connect...

@@ -1,12 +1,13 @@
 import { combineReducers } from 'redux';
 import BooksReducer from './reducer_books';
+import ActiveBook from './reducer_active_book';
 
 const rootReducer = combineReducers({
   // this is global application state
-  books: BooksReducer
+  books: BooksReducer,
+  activeBook: ActiveBook
   // key is name of piece of state. value is reducer itself
 });
-
 // when we pass it to combineReducers, we're telling Redux how to define our application state
 
 export default rootReducer;

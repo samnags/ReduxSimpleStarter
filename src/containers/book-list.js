@@ -10,7 +10,7 @@ import { bindActionCreators } from 'redux'
 // container - React component that has direct connection to state managed by Redux
 // move containers into their old folder
 class BookList extends Component {
-  renderList() {
+  renderList() {    
     return this.props.books.map((book) => {
       return (
         <li
@@ -48,7 +48,7 @@ function mapDispatchToProps(dispatch) {
 
 // Anything returned from this function will end up as props on BookList container
   // so there will be this.props.selectBook which will call the action screator
-
+//
   return bindActionCreators({ selectBook: selectBook}, dispatch);
 }
 

@@ -12,7 +12,7 @@ export default function(state = null, action) {
     return action.payload
   }
   return state;
-  // above case if we don't are about action
+  // above case if we don't care about action
 }
 
 // no manipulating state in reducer. return fresh object
